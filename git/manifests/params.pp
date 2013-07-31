@@ -21,9 +21,15 @@ class git::params {
 #	  path => ["/usr/bin", "/usr/sbin"]
 #	}
         $packages = "git-1.8.3.2-intel-universal-snow-leopard.dmg"
-	$providers = 'appdmg'
+	$providers = 'pkgdmg'
 	$sources = "https://git-osx-installer.googlecode.com/files/git-1.8.3.2-intel-universal-snow-leopard.dmg"
-      exec { 'source /etc/profile': } 
+      	file { '/usr/local/bin':
+	  ensure => directory,
+	}
+	file { "/usr/local/bin/git":
+	  ensure => link,
+	  target => "/usr/local/git/bin/git",
+	}
     }
   }
 }
