@@ -1,0 +1,7 @@
+#!/bin/sh
+# Install git
+
+curl -O https://git-osx-installer.googlecode.com/files/git-1.8.3.2-intel-universal-snow-leopard.dmg
+hdiutil mount git-1.8.3.2-intel-universal-snow-leopard.dmg
+sudo installer -package /Volumes/Git\ 1.8.3.2\ Snow\ Leopard\ Intel\ Universal/git-1.8.3.2-intel-universal-snow-leopard.pkg -target "/Volumes/Macintosh HD"
+source /etc/profile
