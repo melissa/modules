@@ -5,7 +5,7 @@
 #
 # Sample Usage:
 #   class { 'osxbuilder': }
-# 
+#
 
 class osxbuilder (
     $pe = false,

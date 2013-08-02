@@ -9,8 +9,8 @@ class osxbuilder::packages::essential {
     #    'source',
     #]
 
-    #package { $builder_packages: 
-    #  ensure => present, 
+    #package { $builder_packages:
+    #  ensure => present,
     #  source => ["/usr/bin", "/usr/sbin"],
     #}
 

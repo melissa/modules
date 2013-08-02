@@ -19,7 +19,9 @@ class git {
 
   package { $git::params::packages:
     ensure => installed,
-    provider => $providers,
-    source => $sources,
+    if $operatingsystem == 'Darwin' {
+      provider => $providers,
+      source => $sources,
+    }
   }
 }
