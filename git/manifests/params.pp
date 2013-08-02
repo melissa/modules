@@ -10,26 +10,20 @@ class git::params {
         default: { $packages = 'git' }
       }
     }
-   'CentOS', 'SLES', 'Ubuntu', 'RedHat', 'Fedora': { $packages = 'git' }
+    'CentOS', 'SLES', 'Ubuntu', 'RedHat', 'Fedora': { $packages = 'git' }
     'FreeBSD': { $packages = 'devel/git' }
-    # default:   { fail("No git package known for operating system ${operatingsystem}") }
-    'Darwin': { 
-#       exec { 'download-git':
-#	  command => "curl -O https://git-osx-installer.googlecode.com/files/git-1.8.3.2-intel-universal-snow-leopard.dmg",
-#	  cwd => "/var/tmp",
-#	  creates => "/var/tmp/git-1.8.3.2-intel-universal-snow-leopard.dmg",
-#	  path => ["/usr/bin", "/usr/sbin"]
-#	}
-        $packages = "git-1.8.3.2-intel-universal-snow-leopard.dmg"
-	$providers = 'pkgdmg'
-	$sources = "https://git-osx-installer.googlecode.com/files/git-1.8.3.2-intel-universal-snow-leopard.dmg"
-      	file { '/usr/local/bin':
-	  ensure => directory,
-	}
-	file { "/usr/local/bin/git":
-	  ensure => link,
-	  target => "/usr/local/git/bin/git",
-	}
+    'Darwin': {
+      $packages = "git-1.8.3.2-intel-universal-snow-leopard.dmg"
+      $providers = 'pkgdmg'
+      $sources = "https://git-osx-installer.googlecode.com/files/git-1.8.3.2-intel-universal-snow-leopard.dmg"
+      file { '/usr/local/bin':
+        ensure => directory,
+      }
+      file { "/usr/local/bin/git":
+        ensure => link,
+        target => "/usr/local/git/bin/git",
+      }
     }
+  default:   { fail("No git package known for operating system ${operatingsystem}") }
   }
 }
